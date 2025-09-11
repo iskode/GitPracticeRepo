@@ -33,7 +33,7 @@ git status
 This command will list all of the files you changed in a color-coded fashion, but since you only added one file, only one file shows up. Now that you've reminded yourself of the file(s) you wanted to add, you can stage the changes, by:
 
 ```bash
-git add (your full name here).txt
+git add (your-full-name-here-without-space).txt
 ```
 
 When you add files, you're **staging** them for commit, and you're beginning to **track** them. You can also stage files regardless of internet connection since it isn't uploading or downloading anything. Tracking files in git is super convenient- once they're tracked, you can see previous edits and versions. 
