@@ -33,7 +33,7 @@ git status
 This command will list all of the files you changed in a color-coded fashion, but since you only added one file, only one file shows up. Now that you've reminded yourself of the file(s) you wanted to add, you can stage the changes, by:
 
 ```bash
-git add (your-full-name-here-without-space).txt
+git add your-full-name-here-without-space.txt
 ```
 
 When you add files, you're **staging** them for commit, and you're beginning to **track** them. You can also stage files regardless of internet connection since it isn't uploading or downloading anything. Tracking files in git is super convenient- once they're tracked, you can see previous edits and versions. 
@@ -78,18 +78,14 @@ This is great if you're working in a team and one of your teammates has made cha
 
 Like pushing, you will need internet to pull from GitHub.
 
-## Merges
-Not only can you add new files, you can also edit existing ones and update them on the remote repository the exact same way you'd add new ones. Git will MERGE your local repository with the remote one, updating it.
-
-Git is even smart enough to merge lines in the *same file*. Let's say Ryan and I are working on two seperate parts of code in `file1.py`. I write a function called `hello_world()` and Ryan writes a function called `random_function()`. First, I do not have Ryan's function on my local repository and he doesn't have mine. But, we both decide to commit and push to the remote repository. Git will actually *merge* our two versions of `file1.py` to  make one with *both `hello_world()` and `random_function()`.* However, something to note is that if multiple people edit the the same lines/sections at once and try to push their commits, you might get an error called a **merge conflict**. More on that later!
 
 ## Branches
 Let's say you're working on a bit of an *ambitious project* that you're not sure will work or not, and, while you want to commit your changes, you don't want to update the remote repository and lose the old work. Another cool feature of GitHub is making different **branches**.
 
 ### Creating a new branch
-First, let's start with creating our branch with:
+First, let's start with creating our branch with (replace bra:
 ```bash
-git checkout -b (branch name)
+git checkout -b branch-name
 ```
 To see all of your branches, `git branch -v` will list all of them. You should see a `master` branch and your own branch. 
 
@@ -97,7 +93,7 @@ To see all of your branches, `git branch -v` will list all of them. You should s
 To switch between branches, we use the `checkout` command.
 
 ```bash
-git checkout (branch name)
+git checkout branch-name
 ```
 
 An important note about working on branches! Any changes you make to one branch will NOT effect the other branch. So, if you add a bunch of files to one branch, your master branch will have no idea those files exist. Likewise, you can delete, rename, edit, anything you'd like on a branch and have your other branches stay the exact same.
@@ -108,11 +104,21 @@ To double-check what branch you're on, simply type:
 git branch
 ```
 
+### Do some changes on your new branch
+
+Modify the file `aaron_yang.txt` in this repository by adding the following line:
+```
+This is my change (your full name)
+```
+where you write your actual full name in the parenthesis.
+
+Then you do a commit.
+
 ### Pushing to that new branch
 Committing and adding to different branches is the exact same! However, pushing requires a bit of effort. If you try to simply push, you'll get an error. Instead, you'll want to write:
 
 ```bash
-git push origin (branch name)
+git push origin branch-name
 ```
 Origin designates what remote we are pushing to and branch indicates what branch we're pushing from.
 
@@ -131,12 +137,12 @@ git checkout master
 Next, we merge them with this simple command:
 
 ```bash
-git merge (branch name) 
+git merge branch-name 
 ```
 
 If you feel so inclined to delete your previous branch, use:
 ```bash
-git branch -d (branch name) 
+git branch -d branch-name 
 ```
 
 Now, the branches are merged on YOUR computer. It's time to update the remote repository to reflect that! Just like we're pushing from a branch, add and commit and finally push like this:
@@ -160,7 +166,7 @@ git log
 You'll see bunch of commits, commit messages, and **commit hashes** (the things that look like `12345678901234567890123456789012345678ab`) These are important! Find the commit hash of the commit you want to go back to, and then type out:
 
 ```bash
-git checkout (commit hash) .
+git checkout commit-hash .
 ```
 
 The . is important, as it sets your branch to the current one. Finally, commit your changes and your repository should be reset!
